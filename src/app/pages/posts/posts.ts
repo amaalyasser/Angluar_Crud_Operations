@@ -38,7 +38,7 @@ export class Posts {
   }
 
   editPost(index: number) {
-    // Implement edit logic if required
+  
   }
 
   ngOnInit() {
