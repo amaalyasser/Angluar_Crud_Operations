@@ -1,0 +1,36 @@
+
+
+<div class="container">
+  <div class="row gy-3">
+    <form #postForm="ngForm" class="col-12" (ngSubmit)="handleAddPost()">
+      <div class="row">
+        <div class="col-4">
+          <input type="text" name="id" placeholder="enter post id" class="form-control" [(ngModel)]="newPost.id" required />
+        </div>
+        <div class="col-4">
+          <input type="text" name="title" placeholder="enter post title" class="form-control" [(ngModel)]="newPost.title" required />
+        </div>
+        <div class="col-4">
+          <input type="text" name="body" placeholder="enter post body" class="form-control" [(ngModel)]="newPost.body" required />
+        </div>
+      </div>
+      <button class="btn btn-primary" type="submit">Add Post</button>
+    </form>
+
+    <div *ngFor="let item of postsList; let i = index" class="col-4">
+      <div class="card" [ngClass]="{ 'bg-light': i === 0, 'bg-warning-subtle': i === postsList.length - 1, 'border-primary': i % 2 === 0, 'border-danger': i % 2 !== 0 }">
+        <div class="card-body">
+           <h4>{{ item.id }}</h4>
+          <h4>{{ item.title }}</h4>
+           <h4>{{ item.body }}</h4>
+          <h5>index = {{ i }}</h5>
+          <button class="btn btn-success" [routerLink]="item.id">Read More</button>
+          <button class="btn btn-danger" (click)="deletePost(i)">Delete post</button>
+          <button class="btn btn-primary" (click)="editPost(i)">Edit Post</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
